@@ -21,6 +21,9 @@
         <!-- Register Form -->
         <div class="auth-form">
 
+            <form action="{{ route('register.proses') }}" method="POST">
+                @csrf
+
             <!-- Full Name -->
             <div class="form-group">
 
@@ -89,7 +92,7 @@
 
             <!-- Submit -->
             <button
-                type="button"
+                type="submit"
                 class="btn-primary"
             >
                 Register

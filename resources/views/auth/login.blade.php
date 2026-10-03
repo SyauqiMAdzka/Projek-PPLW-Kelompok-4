@@ -21,6 +21,9 @@
 
         <div class="auth-form">
 
+            <form action="{{ route('login.proses') }}" method="POST">
+                @csrf
+
             <div class="form-group">
 
                 <label for="email">
@@ -84,7 +87,7 @@
 
 
             <button
-                type="button"
+                type="submit"
                 class="btn-primary"
             >
                 Login
