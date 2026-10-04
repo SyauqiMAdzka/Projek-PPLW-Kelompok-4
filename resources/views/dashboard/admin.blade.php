@@ -66,15 +66,13 @@
             <div class="control-card">
 
                 <div class="control-icon">
-                    ◈
+                    A
                 </div>
 
-                <h4>Kontrol stok lebih rapi</h4>
+                <h4>Admin</h4>
 
                 <p>
-                    CRUD barang, monitoring
-                    pengadaan, dan approval
-                    menjadi lebih cepat.
+                   administrative duties
                 </p>
 
             </div>

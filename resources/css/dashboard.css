@@ -779,3 +779,92 @@ td {
 
     border-radius: 20px;
 }
+
+    /* =========================
+   PROFILE CARD
+   ========================= */
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    padding: 12px;
+
+    background: #ffffff;
+    border: 1px solid #dce9df;
+    border-radius: 14px;
+
+    box-sizing: border-box;
+
+    transition: all 0.2s ease;
+}
+
+.profile-card:hover {
+    border-color: #4f8f52;
+    box-shadow: 0 4px 12px rgba(54, 91, 61, 0.08);
+    cursor: pointer;
+}
+
+/* Avatar */
+
+.profile-avatar {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #9ab6a1;
+    color: #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Informasi profile */
+
+.profile-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.profile-name {
+    color: #294635;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-role {
+    margin-top: 3px;
+
+    color: #789080;
+
+    font-size: 11px;
+}
+
+/* Arrow */
+
+.profile-arrow {
+    color: #789080;
+
+    font-size: 24px;
+    line-height: 1;
+
+    transition: transform 0.2s ease;
+}
+
+.profile-card:hover .profile-arrow {
+    transform: translateX(3px);
+}
