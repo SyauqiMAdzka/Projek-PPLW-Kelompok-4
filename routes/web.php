@@ -29,6 +29,14 @@ Route::withoutMiddleware([
         return view('auth.verification');
     });
 
+    Route::get('/preview/admin', function () {
+    return view('dashboard.admin');
+    });
+
+    Route::get('/preview/staff', function () {
+    return view('dashboard.staff');
+    });
+
     Route::view('/test', 'auth.verification');
 
     Route::get('/', function () {
