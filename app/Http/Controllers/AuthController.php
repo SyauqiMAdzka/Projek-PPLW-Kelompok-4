@@ -50,13 +50,31 @@ class AuthController extends Controller{
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
 
-            // Arahkan ke halaman dashboard setelah sukses login
-            return redirect()->intended('/dashboard')->with('success', 'Berhasil login!');
+            $user = Auth::user();
+
+        // Cek berdasarkan role_id atau nama role di database
+        // Contoh: jika role_id == 1 (Admin), lempar ke dashboard admin
+        // Jika role_id == 2 (Staff), lempar ke dashboard staff
+        if ($user->role_id == 1) {
+            return redirect()->intended('/admin/dashboard');
+        } else {
+            return redirect()->intended('/staff/dashboard');
+        }
         }
 
         // 3. Jika gagal, kembalikan ke halaman login dengan pesan error
         return back()->withErrors([
             'email' => 'Email atau password yang kamu masukkan salah.',
         ])->onlyInput('email');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login')->with('success', 'Berhasil logout!');
     }
 }

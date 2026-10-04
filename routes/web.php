@@ -2,6 +2,7 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Session\Middleware\StartSession;
@@ -84,3 +85,18 @@ Route::post('/register', [AuthController::class, 'processRegister'])->name('regi
 // Rute Login
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'processLogin'])->name('login.proses');
+
+// Rute Dashboard yang dilindungi session login
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+
+Route::middleware('auth')->group(function () {
+    // Dashboard khusus Admin
+    Route::get('/admin/dashboard', [DashboardController::class, 'adminIndex'])->name('admin.dashboard');
+
+    // Dashboard khusus Staff
+    Route::get('/staff/dashboard', [DashboardController::class, 'staffIndex'])->name('staff.dashboard');
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
